@@ -53,3 +53,28 @@ solana airdrop 2
 cd solana-counter/anchor
 anchor deploy
 ```
+
+## Run Tests
+Make sure the local validator is running in a separate terminal, then run:
+```
+cd solana-counter/anchor
+anchor test --skip-local-validator
+```
+
+`--skip-local-validator` prevents Anchor from starting its own validator, since you already have one running.
+
+If you are not running a validator separately, you can just use `anchor test` and it will start and stop one automatically.
+
+Expected output:
+```
+ PASS  tests/counter.test.ts
+  counter
+    ✓ Initialize Counter
+    ✓ Increment Counter
+    ✓ Increment Counter Again
+    ✓ Decrement Counter
+    ✓ Set counter value
+    ✓ Set close the counter account
+
+Tests:       6 passed, 6 total
+```
