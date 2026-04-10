@@ -100,3 +100,10 @@ Back on the frontend screen:
 2. Click **Connect Wallet**
 
 When connecting the wallet, Phantom will show a danger warning. It is safe to confirm this time because you are connecting to your own local validator. However, **never confirm such warnings on other sites**, as they usually indicate something suspicious.
+
+# Execute Counter
+Click "Counter Program" in the navigation bar, then click the "Create" button.
+A card will appear showing "Counter: 0".
+
+Click "Increment".
+Approve the transaction in your wallet, and the counter on the card will increment.
