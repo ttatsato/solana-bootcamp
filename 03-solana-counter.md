@@ -78,3 +78,25 @@ Expected output:
 
 Tests:       6 passed, 6 total
 ```
+
+# Frontend
+Start the frontend dev server:
+```
+cd solana-counter
+npm run dev
+```
+
+Then open the app in your browser. You need a wallet such as [Phantom](https://phantom.app/).
+
+## Configure Phantom for Localnet
+In Phantom:
+
+Settings → Developer Settings → Testnet Mode → Localnet
+
+## Connect to the App
+Back on the frontend screen:
+
+1. Select network → **Local**
+2. Click **Connect Wallet**
+
+When connecting the wallet, Phantom will show a danger warning. It is safe to confirm this time because you are connecting to your own local validator. However, **never confirm such warnings on other sites**, as they usually indicate something suspicious.
