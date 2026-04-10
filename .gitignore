@@ -2,3 +2,4 @@
 */target/
 */test-ledger/
 */node_modules/
+solana-counter/anchor/target/*
