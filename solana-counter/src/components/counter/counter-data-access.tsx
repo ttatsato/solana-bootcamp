@@ -87,6 +87,15 @@ export function useCounterProgramAccount({ account }: { account: PublicKey }) {
     },
   })
 
+  const incrementMutationTwo = useMutation({
+    mutationKey: ['counter', 'incrementTwo', { cluster, account }],
+    mutationFn: () => program.methods.incrementTwo().accounts({ counter: account }).rpc(),
+    onSuccess: async (tx) => {
+      transactionToast(tx)
+      await accountQuery.refetch()
+    },
+  })
+
   const setMutation = useMutation({
     mutationKey: ['counter', 'set', { cluster, account }],
     mutationFn: (value: number) => program.methods.set(value).accounts({ counter: account }).rpc(),
@@ -101,6 +110,7 @@ export function useCounterProgramAccount({ account }: { account: PublicKey }) {
     closeMutation,
     decrementMutation,
     incrementMutation,
+    incrementMutationTwo,
     setMutation,
   }
 }

@@ -52,9 +52,10 @@ export function CounterList() {
 }
 
 function CounterCard({ account }: { account: PublicKey }) {
-  const { accountQuery, incrementMutation, setMutation, decrementMutation, closeMutation } = useCounterProgramAccount({
-    account,
-  })
+  const { accountQuery, incrementMutation, incrementMutationTwo, setMutation, decrementMutation, closeMutation } =
+    useCounterProgramAccount({
+      account,
+    })
 
   const count = useMemo(() => accountQuery.data?.count ?? 0, [accountQuery.data?.count])
 
@@ -76,6 +77,10 @@ function CounterCard({ account }: { account: PublicKey }) {
             disabled={incrementMutation.isPending}
           >
             Increment
+          </Button>
+
+          <Button variant="outline" onClick={() => incrementMutationTwo.mutateAsync()}>
+            Increment 2
           </Button>
           <Button
             variant="outline"

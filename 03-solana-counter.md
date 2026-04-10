@@ -107,3 +107,31 @@ A card will appear showing "Counter: 0".
 
 Click "Increment".
 Approve the transaction in your wallet, and the counter on the card will increment.
+
+## Verify the Counter on Chain via CLI
+The counter value is not stored in the browser — it lives in an account on the Solana blockchain.
+You can inspect it directly from the CLI.
+
+Copy the counter account address shown on the card, then run:
+```
+solana account <COUNTER_ACCOUNT_ADDRESS> --url localhost
+```
+
+Example output:
+```
+Public Key: 7Bv4qvYHRprhpBTzPzxnUUCWR2rEv58YyK8M1ZFLkcap
+Balance: 0.00095352 SOL
+Owner: 3j8JPxxDhYpjnp82y3XRatmJMf8ZQYMk5zbpHWav4bnf
+Executable: false
+Length: 9 (0x9) bytes
+0000:   ff b0 04 f5  bc fd 7c 19  02
+```
+
+How to read it:
+- **Owner**: the counter program ID — confirms the account is owned by your program.
+- **Balance**: rent deposit, which will be returned to the payer when the account is closed.
+- **Data**: 9 bytes total.
+  - First 8 bytes (`ff b0 04 f5 bc fd 7c 19`): Anchor account discriminator (identifies the account type).
+  - Last 1 byte (`02`): the actual `count: u8` value — here it is `2`.
+
+Try clicking Increment again and re-running the command — the last byte will change, proving that the state lives on chain.

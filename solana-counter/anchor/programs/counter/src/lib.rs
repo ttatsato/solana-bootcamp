@@ -22,6 +22,11 @@ pub mod counter {
         Ok(())
     }
 
+    pub fn increment_two(ctx: Context<Update>) -> Result<()> {
+        ctx.accounts.counter.count = ctx.accounts.counter.count.checked_add(2).unwrap();
+        Ok(())
+    }
+
     pub fn initialize(_ctx: Context<InitializeCounter>) -> Result<()> {
         Ok(())
     }
